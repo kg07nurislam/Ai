@@ -1,0 +1,1608 @@
+
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10151f">
+
+<title>KVANTOY — Күн сайын жаңы билим</title>
+
+<meta name="description" content="KVANTOY — илим, технология жана жаңы билимдер дүйнөсү. Күн сайын кыргыз тилинде кызыктуу макалалар.">
+
+<style>
+:root {
+  --black: #0b1019;
+  --dark: #101827;
+  --card: #172337;
+  --card2: #1d2b40;
+  --blue: #2878f0;
+  --blue-light: #65a3ff;
+  --gold: #e4bd62;
+  --teal: #159d91;
+  --white: #f7f9ff;
+  --muted: #a6b4c8;
+  --border: rgba(255,255,255,.09);
+  --shadow: 0 15px 45px rgba(0,0,0,.22);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1160px, 92%);
+  margin: auto;
+}
+
+/* SVG ICONS */
+
+.icon {
+  width: 21px;
+  height: 21px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.social-icon {
+  width: 23px;
+  height: 23px;
+  display: block;
+}
+
+/* HEADER */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(11,16,25,.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 950;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.logo span {
+  color: var(--white);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 14px;
+  transition: .25s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.menu-btn {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: white;
+  font-size: 27px;
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 85px 0 80px;
+  background:
+    radial-gradient(ellipse at 5% 15%, rgba(40,120,240,.24), transparent 48%),
+    radial-gradient(ellipse at 90% 85%, rgba(21,157,145,.20), transparent 45%),
+    linear-gradient(120deg,#101827,#0b1019);
+  border-bottom: 1px solid var(--border);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  right: -160px;
+  top: -180px;
+  border-radius: 50%;
+  border: 1px solid rgba(228,189,98,.17);
+  box-shadow:
+    0 0 0 35px rgba(228,189,98,.025),
+    0 0 0 75px rgba(40,120,240,.035);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 750px;
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--gold);
+  border: 1px solid rgba(228,189,98,.35);
+  background: rgba(228,189,98,.08);
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+.hero-label::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--teal);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--teal);
+}
+
+.hero h1 {
+  font-size: clamp(39px, 6vw, 70px);
+  line-height: 1.12;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 22px;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg,var(--gold),#fff0b8,var(--blue-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-description {
+  color: var(--muted);
+  max-width: 560px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 30px;
+}
+
+.primary-btn,
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  font-weight: 750;
+  font-size: 14px;
+  transition: .25s;
+}
+
+.primary-btn {
+  background: linear-gradient(110deg,var(--blue),#1555b8);
+  color: white;
+  border: 0;
+  box-shadow: 0 7px 24px rgba(40,120,240,.22);
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(40,120,240,.35);
+}
+
+.secondary-btn {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  color: white;
+}
+
+.secondary-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* SOCIAL LINKS */
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 45px;
+  padding: 9px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.045);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 650;
+  transition: .25s;
+}
+
+.social:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  background: rgba(228,189,98,.09);
+}
+
+.social.instagram:hover {
+  border-color: #e56bb5;
+}
+
+.social.tiktok:hover {
+  border-color: #69e5e2;
+}
+
+.social.telegram:hover {
+  border-color: #36aee9;
+}
+
+/* SECTION */
+
+main {
+  padding: 70px 0 85px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.section-heading h2 {
+  font-size: clamp(25px,4vw,34px);
+  font-weight: 850;
+  letter-spacing: -.6px;
+}
+
+.section-heading h2 span {
+  color: var(--gold);
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.section-decoration {
+  width: 55px;
+  height: 4px;
+  border-radius: 10px;
+  margin-top: 13px;
+  background: linear-gradient(90deg,var(--blue),var(--gold));
+}
+
+/* SEARCH */
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.search-box {
+  position: relative;
+  flex: 1;
+}
+
+.search-box input {
+  width: 100%;
+  min-height: 51px;
+  padding: 12px 17px 12px 48px;
+  background: var(--card);
+  color: white;
+  border: 1px solid var(--border);
+  outline: none;
+  border-radius: 13px;
+  transition: .25s;
+}
+
+.search-box input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(40,120,240,.12);
+}
+
+.search-box input::placeholder {
+  color: #8493a9;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.refresh-btn {
+  min-height: 51px;
+  padding: 0 21px;
+  border: 0;
+  border-radius: 13px;
+  background: var(--gold);
+  color: #151923;
+  font-weight: 800;
+  transition: .25s;
+}
+
+.refresh-btn:hover {
+  background: #f1d38b;
+  transform: translateY(-2px);
+}
+
+.refresh-btn:disabled {
+  opacity: .5;
+  cursor: wait;
+}
+
+#status {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* CARDS */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 23px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: linear-gradient(145deg,#1c2a40,#131e2e);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  transition: .3s;
+  animation: cardIn .5s ease both;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,var(--blue),var(--gold),transparent);
+  opacity: .65;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(228,189,98,.45);
+  box-shadow: var(--shadow);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 19px;
+}
+
+.category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(228,189,98,.10);
+  border: 1px solid rgba(228,189,98,.22);
+  border-radius: 30px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.date {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.card h3 {
+  font-size: 20px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  overflow-wrap: anywhere;
+}
+
+.card-desc {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 22px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  flex: 1;
+}
+
+.read-btn {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid rgba(40,120,240,.35);
+  border-radius: 11px;
+  background: rgba(40,120,240,.13);
+  color: #9fc4ff;
+  font-weight: 800;
+  transition: .25s;
+}
+
+.read-btn:hover {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 14px;
+}
+
+/* EMPTY STATE */
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 55px 20px;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: 18px;
+}
+
+.empty-icon {
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.empty h3 {
+  margin-bottom: 8px;
+}
+
+.empty p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* MODAL */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(0,0,0,.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.modal.active {
+  display: flex;
+  animation: fadeIn .2s ease;
+}
+
+.modal-content {
+  position: relative;
+  width: min(780px,100%);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 36px;
+  background:
+    radial-gradient(ellipse at top right,rgba(40,120,240,.12),transparent 45%),
+    #172337;
+  border: 1px solid rgba(228,189,98,.32);
+  border-radius: 21px;
+  box-shadow: 0 25px 100px rgba(0,0,0,.55);
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) transparent;
+  animation: modalIn .3s ease;
+}
+
+.close-btn {
+  position: sticky;
+  float: right;
+  top: 0;
+  z-index: 5;
+  width: 43px;
+  height: 43px;
+  margin-top: -10px;
+  margin-right: -10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid var(--border);
+  color: white;
+  font-size: 26px;
+  line-height: 1;
+  transition: .2s;
+}
+
+.close-btn:hover {
+  background: #d74747;
+  transform: rotate(90deg);
+}
+
+.modal-title {
+  clear: both;
+  font-size: clamp(27px,5vw,39px);
+  line-height: 1.3;
+  margin: 22px 0 13px;
+  overflow-wrap: anywhere;
+}
+
+.modal-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-size: 13px;
+  margin-bottom: 27px;
+}
+
+.modal-body {
+  color: #e2e9f4;
+  font-size: 16px;
+  line-height: 2;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.modal-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 30px 0;
+}
+
+.modal-content h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.related {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 10px;
+}
+
+.related button {
+  text-align: left;
+  padding: 12px 14px;
+  border: 1px solid rgba(40,120,240,.25);
+  background: rgba(40,120,240,.10);
+  color: #b4d1ff;
+  border-radius: 11px;
+  font-size: 12px;
+  transition: .2s;
+  overflow-wrap: anywhere;
+}
+
+.related button:hover {
+  background: var(--blue);
+  color: white;
+}
+
+.modal-social {
+  margin-top: 18px;
+}
+
+/* SUBSCRIBE */
+
+.subscribe {
+  margin: 0 0 75px;
+  padding: 30px;
+  border: 1px solid rgba(21,157,145,.35);
+  border-radius: 19px;
+  background:
+    radial-gradient(ellipse at right,rgba(21,157,145,.18),transparent 55%),
+    var(--card);
+}
+
+.subscribe h2 {
+  font-size: 24px;
+  margin-bottom: 7px;
+}
+
+.subscribe p {
+  color: var(--muted);
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* FOOTER */
+
+footer {
+  background: #080d15;
+  border-top: 1px solid var(--border);
+  padding: 40px 0 25px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.footer-description {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  margin-top: 30px;
+  padding-top: 20px;
+  color: var(--muted);
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* TOP BUTTON */
+
+.top-btn {
+  position: fixed;
+  bottom: 23px;
+  right: 23px;
+  z-index: 40;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(228,189,98,.4);
+  border-radius: 50%;
+  background: var(--gold);
+  color: #111722;
+  font-size: 23px;
+  box-shadow: 0 5px 25px #0005;
+  display: none;
+}
+
+.top-btn.visible {
+  display: block;
+  animation: fadeIn .2s;
+}
+
+/* ANIMATIONS */
+
+@keyframes cardIn {
+  from {opacity:0; transform:translateY(20px)}
+  to {opacity:1; transform:translateY(0)}
+}
+
+@keyframes fadeIn {
+  from {opacity:0}
+  to {opacity:1}
+}
+
+@keyframes modalIn {
+  from {opacity:0; transform:translateY(20px) scale(.98)}
+  to {opacity:1; transform:translateY(0) scale(1)}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px) {
+  .grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:600px) {
+  .container {
+    width: 91%;
+  }
+
+  .navbar {
+    height: 66px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 66px;
+    left: 0;
+    width: 100%;
+    padding: 22px;
+    background: #111c2b;
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 19px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hero {
+    padding: 57px 0;
+  }
+
+  .hero h1 {
+    font-size: 43px;
+    letter-spacing: -1.5px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  main {
+    padding: 48px 0 65px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card {
+    padding: 21px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .refresh-btn {
+    width: 100%;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+  }
+
+  .modal {
+    padding: 7px;
+  }
+
+  .modal-content {
+    max-height: 95vh;
+    padding: 25px 19px;
+    border-radius: 17px;
+  }
+
+  .modal-body {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .related {
+    grid-template-columns: 1fr;
+  }
+
+  .subscribe {
+    padding: 23px 19px;
+  }
+
+  .footer-content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+  }
+
+  .top-btn {
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SVG ICON DEFINITIONS -->
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="instagram" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" rx="5"
+      fill="none" stroke="currentColor" stroke-width="2"/>
+    <circle cx="12" cy="12" r="4"
+      fill="none" stroke="currentColor" stroke-width="2"/>
+    <circle cx="18" cy="6" r="1.3" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="tiktok" viewBox="0 0 24 24">
+    <path d="M15 3v11.1a4.1 4.1 0 1 1-3.5-4.05V6.5
+      a8 8 0 1 0 7.5 8V9.8c1.4 1 2.9 1.5 4 1.6V7.5
+      c-3.1-.2-5.4-2-6-4.5H15Z"
+      fill="currentColor"/>
+  </symbol>
+
+  <symbol id="telegram" viewBox="0 0 24 24">
+    <path d="M21.5 3.2 18.2 20c-.25 1.2-.95 1.5-1.9.95
+      l-5.2-3.85-2.5 2.4c-.3.3-.55.55-1.1.55l.4-5.3
+      9.7-8.8c.42-.37-.1-.58-.65-.2L5 13.3l-5.1-1.6
+      c-1.1-.35-1.12-1.1.23-1.65L20.1 2.6
+      c.9-.33 1.68.22 1.4.6Z"
+      fill="currentColor" transform="translate(1 0) scale(.92 1)"/>
+  </symbol>
+</svg>
+
+<!-- HEADER -->
+
+<header>
+  <div class="container navbar">
+
+    <a href="#home" class="logo">KVANT<span>OY</span></a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Башкы бет</a>
+      <a href="#articles">Макалалар</a>
+      <a href="#channels">Биздин каналдар</a>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Меню">
+      ☰
+    </button>
+
+  </div>
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+
+      <span class="hero-label">
+        БИЛИМ • ИЛИМ • ТЕХНОЛОГИЯ
+      </span>
+
+      <h1>
+        Дүйнөнү тааны,<br>
+        <span>билим менен өс!</span>
+      </h1>
+
+      <p class="hero-description">
+        KVANTOY — илим, технология жана кызыктуу маалыматтар
+        дүйнөсү. Күн сайын кыргыз тилинде жаңы билим
+        алып, дүйнөнү башкача тааны.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#articles" class="primary-btn">
+          Макалаларды окуу →
+        </a>
+
+        <a href="#channels" class="secondary-btn">
+          Бизге кошулуңуз ↗
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+
+<main class="container" id="articles">
+
+  <div class="section-heading">
+    <div>
+      <h2>Акыркы <span>макалалар</span></h2>
+      <p>Жаңы билимдер менен таанышыңыз</p>
+      <div class="section-decoration"></div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+
+    <div class="search-box">
+      <span class="search-icon">
+        <svg class="icon" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m16 16 4 4"/>
+        </svg>
+      </span>
+
+      <input
+        id="search"
+        type="search"
+        placeholder="Макаладан издөө..."
+        autocomplete="off"
+      >
+    </div>
+
+    <button class="refresh-btn" id="refresh">
+      ↻ Жаңылоо
+    </button>
+
+  </div>
+
+  <p id="status" role="status">Макалалар жүктөлүүдө...</p>
+
+  <section class="grid" id="posts"></section>
+
+</main>
+
+<!-- SUBSCRIBE -->
+
+<section class="container subscribe" id="channels">
+
+  <h2>✨ KVANTOY менен бирге бол!</h2>
+
+  <p>
+    Жаңы макалаларды, кызыктуу маалыматтарды жана
+    пайдалуу билимдерди биздин социалдык тармактардан оку.
+  </p>
+
+  <div class="socials">
+
+    <a class="social instagram"
+       href="https://www.instagram.com/kvantoy"
+       target="_blank" rel="noopener noreferrer">
+
+      <svg class="social-icon" viewBox="0 0 24 24">
+        <use href="#instagram"/>
+      </svg>
+      Instagram
+    </a>
+
+    <a class="social tiktok"
+       href="https://www.tiktok.com/@kvantoy"
+       target="_blank" rel="noopener noreferrer">
+
+      <svg class="social-icon" viewBox="0 0 24 24">
+        <use href="#tiktok"/>
+      </svg>
+      TikTok
+    </a>
+
+    <a class="social telegram"
+       href="https://t.me/kvantoy"
+       target="_blank" rel="noopener noreferrer">
+
+      <svg class="social-icon" viewBox="0 0 24 24">
+        <use href="#telegram"/>
+      </svg>
+      Telegram
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="container">
+
+    <div class="footer-content">
+
+      <div>
+        <a href="#home" class="logo">KVANT<span>OY</span></a>
+        <p class="footer-description">
+          Күн сайын жаңы билим.
+        </p>
+      </div>
+
+      <div class="socials">
+
+        <a class="social instagram"
+           href="https://www.instagram.com/kvantoy"
+           target="_blank" rel="noopener noreferrer">
+          <svg class="social-icon"><use href="#instagram"/></svg>
+        </a>
+
+        <a class="social tiktok"
+           href="https://www.tiktok.com/@kvantoy"
+           target="_blank" rel="noopener noreferrer">
+          <svg class="social-icon"><use href="#tiktok"/></svg>
+        </a>
+
+        <a class="social telegram"
+           href="https://t.me/kvantoy"
+           target="_blank" rel="noopener noreferrer">
+          <svg class="social-icon"><use href="#telegram"/></svg>
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 KVANTOY. Бардык укуктар корголгон.</span>
+      <a href="#home">Башына кайтуу ↑</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+
+<button class="top-btn" id="topBtn" aria-label="Жогору">
+  ↑
+</button>
+
+<!-- ARTICLE MODAL -->
+
+<div class="modal" id="articleModal" aria-hidden="true">
+
+  <article
+    class="modal-content"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+
+    <button class="close-btn" id="closeModal" aria-label="Жабуу">
+            ×
+    </button>
+
+    <span class="category">✦ KVANTOY • БИЛИМ</span>
+
+    <h2 class="modal-title" id="modalTitle"></h2>
+
+    <p class="modal-date" id="modalDate"></p>
+
+    <div class="modal-body" id="modalBody"></div>
+
+    <div class="modal-divider"></div>
+
+    <h3>💡 Окшош макалалар</h3>
+
+    <div class="related" id="related"></div>
+
+    <div class="modal-divider"></div>
+
+    <h3>Биздин каналдарга кошулуңуз</h3>
+
+    <div class="socials modal-social">
+
+      <a class="social instagram"
+         href="https://www.instagram.com/kvantoy"
+         target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon"><use href="#instagram"/></svg>
+        Instagram
+      </a>
+
+      <a class="social tiktok"
+         href="https://www.tiktok.com/@kvantoy"
+         target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon"><use href="#tiktok"/></svg>
+        TikTok
+      </a>
+
+      <a class="social telegram"
+         href="https://t.me/kvantoy"
+         target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon"><use href="#telegram"/></svg>
+        Telegram
+      </a>
+
+    </div>
+
+  </article>
+</div>
+
+<script>
+
+/* API */
+
+const API_URL =
+  "https://kvantoy.kg07nurislam.workers.dev/api/posts";
+
+const postsContainer = document.getElementById("posts");
+const status = document.getElementById("status");
+const search = document.getElementById("search");
+const refresh = document.getElementById("refresh");
+
+const modal = document.getElementById("articleModal");
+const closeModalBtn = document.getElementById("closeModal");
+
+let allPosts = [];
+let currentPost = null;
+let previousFocus = null;
+let loading = false;
+
+/* CLEAN ARTICLE TEXT */
+
+function getBody(post) {
+
+  let text = (post.caption || post.title || "").trim();
+
+  // Аталышты алып салуу
+  const title = (post.title || "").trim();
+
+  if (title && text.startsWith(title)) {
+    text = text.slice(title.length);
+  }
+
+  // Telegram үчүн кошулган кызматтык тексттерди алып салуу
+  text = text
+    .replace(/@kvantoy\s*·\s*Күн сайын жаңы билим!?/gi, "")
+    .replace(/Сын-пикирлер жана сунуштар жаза кетиңиз!?/gi, "");
+
+  // Ашыкча бош саптарды жана боштуктарды тазалоо
+  return text
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+/* DATE */
+
+function formatDate(value) {
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) return "";
+
+  return date.toLocaleDateString("ky-KG", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "Asia/Bishkek"
+  });
+}
+
+/* LOAD DATA */
+
+async function loadPosts() {
+
+  if (loading) return;
+
+  loading = true;
+  refresh.disabled = true;
+  status.textContent = "Макалалар жүктөлүүдө...";
+
+  try {
+
+    const response = await fetch(API_URL, {
+      headers: {
+        Accept: "application/json"
+      },
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error("HTTP " + response.status);
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data.posts)) {
+      throw new Error("API форматы туура эмес");
+    }
+
+    allPosts = data.posts;
+
+    renderPosts();
+
+  } catch (error) {
+
+    console.error("API error:", error);
+
+    status.textContent =
+      "Маалыматтарды алуу мүмкүн болгон жок. Кийинчерээк кайра аракет кылыңыз.";
+
+  } finally {
+
+    loading = false;
+    refresh.disabled = false;
+  }
+}
+
+/* RENDER POSTS */
+
+function renderPosts() {
+
+  const query = search.value
+    .trim()
+    .toLocaleLowerCase("ky");
+
+  const filtered = allPosts.filter(post => {
+
+    const text = (
+      (post.title || "") + " " + getBody(post)
+    ).toLocaleLowerCase("ky");
+
+    return text.includes(query);
+  });
+
+  postsContainer.replaceChildren();
+
+  if (!filtered.length) {
+
+    const empty = document.createElement("div");
+    empty.className = "empty";
+
+    const icon = document.createElement("div");
+    icon.className = "empty-icon";
+    icon.textContent = "🔎";
+
+    const heading = document.createElement("h3");
+    heading.textContent = allPosts.length
+      ? "Макала табылган жок"
+      : "Азырынча макалалар жок";
+
+    const description = document.createElement("p");
+    description.textContent = allPosts.length
+      ? "Башка сөз менен издеп көрүңүз."
+      : "Жаңы макалалар жарыяланганда бул жерден көрөсүз.";
+
+    empty.append(icon, heading, description);
+    postsContainer.append(empty);
+
+    status.textContent = "";
+    return;
+  }
+
+  status.textContent = "Жалпы макала: " + filtered.length;
+
+  filtered.forEach((post, index) => {
+
+    const card = document.createElement("article");
+    card.className = "card";
+    card.style.animationDelay =
+      Math.min(index * 45, 400) + "ms";
+
+    const top = document.createElement("div");
+    top.className = "card-top";
+
+    const category = document.createElement("span");
+    category.className = "category";
+    category.textContent = "✦ БИЛИМ";
+
+    const date = document.createElement("span");
+    date.className = "date";
+    date.textContent = formatDate(post.created);
+
+    top.append(category, date);
+
+    const title = document.createElement("h3");
+    title.textContent = post.title || "Аталышы жок";
+
+    const description = document.createElement("p");
+    description.className = "card-desc";
+
+    const body = getBody(post);
+
+    description.textContent = body.length > 155
+      ? body.slice(0, 155).trim() + "..."
+      : body;
+
+    const footer = document.createElement("div");
+    footer.className = "card-footer";
+
+    const reading = document.createElement("span");
+    reading.textContent = "KVANTOY";
+
+    const symbol = document.createElement("span");
+    symbol.textContent = "✦ Жаңы билим";
+
+    footer.append(reading, symbol);
+
+    const button = document.createElement("button");
+    button.className = "read-btn";
+    button.textContent = "Макаланы окуу →";
+
+    button.addEventListener("click", () => {
+      openArticle(post);
+    });
+
+    card.append(top, title, description, footer, button);
+
+    postsContainer.append(card);
+  });
+}
+
+/* OPEN ARTICLE */
+
+function openArticle(post) {
+
+  currentPost = post;
+  previousFocus = document.activeElement;
+
+  document.getElementById("modalTitle").textContent =
+    post.title || "Макала";
+
+  document.getElementById("modalDate").textContent =
+    "◷ " + formatDate(post.created);
+
+  document.getElementById("modalBody").textContent =
+    getBody(post);
+
+  renderRelated(post);
+
+  modal.classList.add("active");
+  modal.setAttribute("aria-hidden", "false");
+
+  document.body.classList.add("modal-open");
+
+  closeModalBtn.focus();
+
+  // Ар бир жаңы макала ачылганда терезени башына жылдыруу
+  document.querySelector(".modal-content").scrollTop = 0;
+}
+
+/* CLOSE ARTICLE */
+
+function closeModal() {
+
+  if (!modal.classList.contains("active")) return;
+
+  modal.classList.remove("active");
+  modal.setAttribute("aria-hidden", "true");
+
+  document.body.classList.remove("modal-open");
+
+  currentPost = null;
+
+  if (previousFocus && previousFocus.isConnected) {
+    previousFocus.focus();
+  }
+}
+
+closeModalBtn.addEventListener("click", closeModal);
+
+modal.addEventListener("click", event => {
+  if (event.target === modal) {
+    closeModal();
+  }
+});
+
+document.addEventListener("keydown", event => {
+
+  if (event.key === "Escape") {
+    closeModal();
+  }
+
+  // Модалдык терезеде Tab фокусун кармоо
+  if (event.key === "Tab" && modal.classList.contains("active")) {
+
+    const focusable = modal.querySelectorAll(
+      'a[href], button:not(:disabled)'
+    );
+
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+});
+
+/* RELATED ARTICLES */
+
+function keywords(text) {
+
+  return (text || "")
+    .toLocaleLowerCase("ky")
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .split(/\s+/)
+    .filter(word => word.length >= 5);
+}
+
+function renderRelated(post) {
+
+  const container = document.getElementById("related");
+
+  container.replaceChildren();
+
+  const currentWords = new Set(
+    keywords((post.title || "") + " " + getBody(post))
+  );
+
+  const related = allPosts
+    .filter(item => item.id !== post.id)
+    .map(item => {
+
+      const words = keywords(
+        (item.title || "") + " " + getBody(item)
+      );
+
+      const score = words.filter(
+        word => currentWords.has(word)
+      ).length;
+
+      return { item, score };
+
+    })
+    .filter(x => x.score > 0)
+    .sort((a,b) => b.score - a.score)
+    .slice(0,4);
+
+  const suggestions = related.length
+    ? related.map(x => x.item)
+    : allPosts.filter(item => item.id !== post.id).slice(0,4);
+
+  if (!suggestions.length) {
+
+    const empty = document.createElement("p");
+    empty.textContent = "Азырынча окшош макалалар жок.";
+    empty.style.color = "var(--muted)";
+
+    container.append(empty);
+    return;
+  }
+
+  suggestions.forEach(item => {
+
+    const button = document.createElement("button");
+
+    button.textContent = item.title || "Макала";
+
+    button.addEventListener("click", () => {
+      openArticle(item);
+    });
+
+    container.append(button);
+  });
+}
+
+/* SEARCH */
+
+search.addEventListener("input", renderPosts);
+
+/* REFRESH */
+
+refresh.addEventListener("click", loadPosts);
+
+/* MOBILE MENU */
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+
+  const isOpen = navLinks.classList.toggle("open");
+
+  menuBtn.textContent = isOpen ? "×" : "☰";
+  menuBtn.setAttribute("aria-expanded", String(isOpen));
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+
+  link.addEventListener("click", () => {
+
+    navLinks.classList.remove("open");
+
+    menuBtn.textContent = "☰";
+    menuBtn.setAttribute("aria-expanded", "false");
+  });
+});
+
+/* BACK TO TOP */
+
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+
+  topBtn.classList.toggle(
+    "visible",
+    window.scrollY > 400
+  );
+
+}, { passive: true });
+
+topBtn.addEventListener("click", () => {
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+});
+
+/* INITIALIZATION */
+
+loadPosts();
+
+// База автоматтык түрдө 60 секунд сайын жаңыланат.
+setInterval(loadPosts, 60000);
+
+</script>
+
+</body>
+  </html>
